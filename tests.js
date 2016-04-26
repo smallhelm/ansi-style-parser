@@ -33,11 +33,18 @@ test('basics', function(t){
   t.end();
 });
 
-/*
 test('nested_styles', function(t){
   tst(t, chalk.green.bgRed.underline('world'), [
-      {styles: 'TODO', text: 'world '}
+      {styles: ['green', 'bgRed', 'underline'], text: 'world'}
+  ]);
+
+  tst(t, chalk.green('h'+chalk.bgRed('e'+chalk.bold('l'+chalk.blue('l') +chalk.underline('o')))+'!'), [
+      {text: 'h', styles: ['green']},
+      {text: 'e', styles: ['green', 'bgRed']},
+      {text: 'l', styles: ['green', 'bgRed', 'bold']},
+      {text: 'l', styles: ['bgRed', 'bold', 'blue']},
+      {text: 'o', styles: ['bgRed', 'bold', 'green', 'underline']},
+      {text: '!', styles: ['green']}
   ]);
   t.end();
 });
-*/

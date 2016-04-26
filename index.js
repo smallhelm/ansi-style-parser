@@ -9,6 +9,13 @@ var each = function(obj, fn){
   }
 };
 
+var removeElm = function(arr, val){
+  var i = arr.indexOf(val);
+  if(i >= 0){
+    arr.splice(i, 1)
+  }
+};
+
 //values - first is the code, the reset are escapes
 var styles = {
   bold: [1, 21, 22],
@@ -39,24 +46,40 @@ var styles = {
 
 var code_to_style = {};
 var escape_codes = {};
+var common_escapes = {};
+
+var addEscapeCode = function(escape_code, code, name){
+  if(!escape_codes[escape_code]){
+    escape_codes[escape_code] = {};
+  }
+  escape_codes[escape_code][code] = true;
+  escape_codes[escape_code][name] = true;
+};
 
 each(styles, function(style, name){
   var code = '\u001b['+style[0]+'m';
   code_to_style[code] = name;
 
-  var addEscapeCode = function(escape_code){
-    if(!escape_codes[escape_code]){
-      escape_codes[escape_code] = {};
-    }
-    escape_codes[escape_code][code] = true;
-    escape_codes[escape_code][name] = true;
-  };
-
   each(style.slice(1), function(num){
-    addEscapeCode('\u001b['+num+'m');
+    var esc_code = '\u001b['+num+'m';
+    addEscapeCode(esc_code, code, name);
+    if(!common_escapes[esc_code]){
+      common_escapes[esc_code] = {};
+    }
+    common_escapes[esc_code][code] = true;
   });
-  addEscapeCode('\u001b[m');
-  addEscapeCode('\u001b[0m');
+  addEscapeCode('\u001b[m', code, name);
+  addEscapeCode('\u001b[0m', code, name);
+});
+
+each(common_escapes, function(styles, code){
+  each(styles, function(o, style_a){
+    each(styles, function(o, style_b){
+      if(style_a !== style_b){
+        addEscapeCode(style_a, style_b, code_to_style[style_b]);
+      }
+    });
+  });
 });
 
 module.exports = function(str){
@@ -68,12 +91,16 @@ module.exports = function(str){
   while(e = ansiRegEx().exec(curr)){
     if(e.index > 0){
       r.push({
-        styles: curr_style,
+        styles: curr_style.slice(0),
         text: curr.substr(0, e.index)
       });
     }
     code = e[0];
-    curr_style = [];//TODO handle resets
+    if(escape_codes[code]){
+      each(escape_codes[code], function(o, code){
+        removeElm(curr_style, code);
+      });
+    }
     if(code_to_style[code]){
       curr_style.push(code_to_style[code]);
     }
