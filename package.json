@@ -27,7 +27,6 @@
     "tape": "^4.5.1"
   },
   "dependencies": {
-    "ansi-regex": "^2.0.0",
-    "ansi-styles": "^2.2.1"
+    "ansi-regex": "^2.0.0"
   }
 }
