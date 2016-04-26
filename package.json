@@ -1,0 +1,33 @@
+{
+  "name": "ansi-style-parser",
+  "version": "0.0.0",
+  "description": "[![build status](https://secure.travis-ci.org/smallhelm/ansi-style-parser.png)](https://travis-ci.org/smallhelm/ansi-style-parser) [![dependency status](https://david-dm.org/smallhelm/ansi-style-parser.svg)](https://david-dm.org/smallhelm/ansi-style-parser)",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smallhelm/ansi-style-parser.git"
+  },
+  "keywords": [
+    "ansi",
+    "styles",
+    "colors",
+    "parser"
+  ],
+  "author": "farskipper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smallhelm/ansi-style-parser/issues"
+  },
+  "homepage": "https://github.com/smallhelm/ansi-style-parser#readme",
+  "devDependencies": {
+    "chalk": "^1.1.3",
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "ansi-regex": "^2.0.0",
+    "ansi-styles": "^2.2.1"
+  }
+}
