@@ -1,6 +1,6 @@
 {
   "name": "ansi-style-parser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parse ansi colors and styles",
   "main": "index.js",
   "scripts": {
