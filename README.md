@@ -3,7 +3,12 @@
 [![build status](https://secure.travis-ci.org/smallhelm/ansi-style-parser.png)](https://travis-ci.org/smallhelm/ansi-style-parser)
 [![dependency status](https://david-dm.org/smallhelm/ansi-style-parser.svg)](https://david-dm.org/smallhelm/ansi-style-parser)
 
-Parse ansi colors and styles
+Parse ANSI colors and styles
+
+## Install
+`npm install ansi-style-parser`
+
+## Usage
 
 ```js
 var c = require('chalk');
@@ -14,7 +19,7 @@ txt += c.bold.green('styled ' + c.underline.bgBlack('text') + c.red('!'));
 
 console.log(parser(txt));
 ```
-output:
+Output:
 ```js
 [ { styles: [],
     text: 'Some ' },
