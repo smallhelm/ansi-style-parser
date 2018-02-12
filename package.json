@@ -1,7 +1,7 @@
 {
   "name": "ansi-style-parser",
   "version": "1.1.0",
-  "description": "Parse ansi colors and styles",
+  "description": "Parse ANSI colors and styles",
   "main": "index.js",
   "scripts": {
     "test": "node tests.js"
@@ -27,6 +27,6 @@
     "tape": "^4.5.1"
   },
   "dependencies": {
-    "ansi-regex": "^2.0.0"
+    "ansi-regex": "^3.0.0"
   }
 }
