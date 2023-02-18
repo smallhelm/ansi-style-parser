@@ -23,8 +23,7 @@
   },
   "homepage": "https://github.com/smallhelm/ansi-style-parser#readme",
   "devDependencies": {
-    "chalk": "^4.1.0",
-    "tape": "^5.0.1"
+    "chalk": "^4.1.0"
   },
   "dependencies": {
     "ansi-regex": "^5.0.1"

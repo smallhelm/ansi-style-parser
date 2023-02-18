@@ -1,9 +1,10 @@
-var test = require('tape');
+var assert = require("node:assert");
+var test = require("node:test");
 var chalk = require('chalk');
 var parser = require('./');
 
 var tst = function(t, src, expected){
-  t.deepEquals(parser(src), expected);
+  assert.deepEqual(parser(src), expected);
 };
 
 test('basics', function(t){
@@ -29,8 +30,6 @@ test('basics', function(t){
       {styles: ['red'], text: '? '},
       {styles: [], text: 'end'}
   ]);
-
-  t.end();
 });
 
 test('nested_styles', function(t){
@@ -46,5 +45,4 @@ test('nested_styles', function(t){
       {text: 'o', styles: ['bgRed', 'bold', 'green', 'underline']},
       {text: '!', styles: ['green']}
   ]);
-  t.end();
 });
